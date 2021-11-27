@@ -18,21 +18,25 @@ class TCalculator
 {
 	string expr;             // выражение в инфиксной форме
 	string postfix;          // выражение в постфиксной форме
-	TStack <char> st_c;      // стэк для операций
+	TStack <string> st_c;      // стэк для операций
 	TStack <double> st_d;    // стек для чисел 
 
-	int Priority(char c);    // определение приоритетных операций
-	bool isOperator(char c); // операция?
-	bool isNumber(char c);   // число?
-	void ClearStacks();
+	int Priority(const string& op);      // определение приоритетных операций
+	bool isOperator(char c);		   	 // операция?
+	bool isFunction(const string& func);	 //функция?
+	bool isNumber(char c);				 // число?
+	void ClearStacks();					 //очистить стеки
+	void PushResultOp(const string&);	 //посчитать выражение
+	void PushResultFunc(const string&);	 //посчитать функцию
 
 public:
 
-	TCalculator();      //конструктор 
+	TCalculator(string _expr = "") : expr(_expr) {};      //конструктор 
 	//~TCalculator();
 	double CalcPostfix();	    // вычислить в постфиксной форме
 	double Calc();				//вычислить в инфиксной форме
-	string ToPostfix();			// Перевод в постфиксную форму
-	void SetExpression(string c);
-
+	void ToPostfix();			// Перевод в постфиксную форму
+	void SetExpression(string c = "") { expr = c; };
+	string GetPost() { return postfix; }
+	bool CheckBrackets();	 // проверка расстановки скобок
 };

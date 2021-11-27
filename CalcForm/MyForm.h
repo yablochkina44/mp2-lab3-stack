@@ -67,11 +67,12 @@ namespace CalcForm {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(413, 83);
+			this->label1->Location = System::Drawing::Point(393, 69);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(70, 26);
+			this->label1->Size = System::Drawing::Size(25, 26);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"label1";
+			this->label1->Text = L"=";
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// button1
 			// 
@@ -125,5 +126,7 @@ namespace CalcForm {
 		calc.ToPostfix();
 		label1->Text = "= " + Convert::ToString(calc.CalcPostfix());
 	}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

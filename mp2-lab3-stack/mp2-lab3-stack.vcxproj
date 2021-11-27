@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MyExceptoin.h" />
     <ClInclude Include="TCalculator.h" />
     <ClInclude Include="TStack.h" />
   </ItemGroup>

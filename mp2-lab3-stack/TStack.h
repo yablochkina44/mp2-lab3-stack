@@ -1,5 +1,5 @@
 #pragma once
-
+#include "MyExceptoin.h"
 #include <iostream>
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
 	{
 		if ((_Size <= 0) || (_Size > 1000))
 		{
-			throw "Некоретный размер стека";
+			throw MyExceptoin("Некоретный размер стека");
 		}
 		else
 		{
@@ -142,7 +142,7 @@ T TStack<T>::Top()
 {
 	//исключение если нечего смотреть
 	if (Empty())
-		throw "Стек пуст";
+		throw MyExceptoin("Смотреть нечего");
 	else
 		return mas[NumLast];
 }
@@ -163,7 +163,6 @@ void TStack<T>::Push(const T& n)
 	if (Full())
 		throw "Стек полон";
 	else
-		NumLast++;
-	mas[NumLast] = n;
+		mas[++NumLast] = n;
 
 }

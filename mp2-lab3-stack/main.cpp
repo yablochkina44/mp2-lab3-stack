@@ -48,8 +48,10 @@ void main()
 	cout << "-------------------" << endl;
 	cout << "Калькулятор" << endl;
 	TCalculator ex;
-	ex.SetExpression("((3-1)*1)^3");
-	cout << ex.ToPostfix() << endl;
+	ex.SetExpression("(2+3)*sin(0)+101");
+	ex.CheckBrackets();
+	ex.ToPostfix();
+	cout << ex.GetPost() << endl;
 	cout << ex.CalcPostfix() << endl;
 	cout << ex.Calc() << endl;
 
