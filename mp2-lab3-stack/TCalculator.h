@@ -39,4 +39,5 @@ public:
 	void SetExpression(string c = "") { expr = c; };
 	string GetPost() { return postfix; }
 	bool CheckBrackets();	 // проверка расстановки скобок
+	
 };

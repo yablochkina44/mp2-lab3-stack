@@ -142,7 +142,7 @@ T TStack<T>::Top()
 {
 	//исключение если нечего смотреть
 	if (Empty())
-		throw MyExceptoin("Смотреть нечего");
+		throw 1;
 	else
 		return mas[NumLast];
 }
@@ -151,7 +151,8 @@ template <class T>
 T TStack<T>::Pop()
 {
 	if (Empty())
-		throw NumLast;
+		throw 1;
+		//throw MyExceptoin("stack empty!!");
 	else
 		return mas[NumLast--];
 
@@ -161,7 +162,7 @@ template <class T>
 void TStack<T>::Push(const T& n)
 {
 	if (Full())
-		throw "Стек полон";
+		throw 1;
 	else
 		mas[++NumLast] = n;
 

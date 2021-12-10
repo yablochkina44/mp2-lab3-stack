@@ -100,14 +100,14 @@ double TCalculator::CalcPostfix()
 			double tmp = stod(&postfix[i], &ind);
 			st_d.Push(tmp);
 			i += ind - 1;
-			continue;//
+			continue;
 		}
 		if (isOperator(postfix[i]))
 		{
 			if (st_d.Empty())
 				throw "—тек пуст";
 			PushResultOp(string(1,postfix[i]));
-			continue;//
+			continue;
 		}
 		if (postfix[i] != ' ')
 		{
@@ -217,6 +217,7 @@ void TCalculator::ToPostfix()
 		{
 			while (st_c.Top() != "(")
 			{
+				
 				postfix += st_c.Pop();
 				postfix += " ";
 			}
@@ -261,7 +262,7 @@ void TCalculator::ToPostfix()
 	}
 	// empy строка пуста€?
 	// erase(iterator p) стирает символ на который указывает p
-	// isspace(int ch) €вл€етс€ ли ch пробелом?
+	// isspace(int ch) €вл€етс€ ли ch пробелом?qs
 
 }
 bool TCalculator::CheckBrackets()
@@ -293,6 +294,7 @@ bool TCalculator::CheckBrackets()
 	cout << "The placement of brackets is correct :)" << endl;
 	return 1;
 }
+
 //void TCalculator::SetExpression(string c)
 //{
 //	TStack <char> ch;
