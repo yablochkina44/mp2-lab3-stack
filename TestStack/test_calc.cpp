@@ -65,3 +65,24 @@ TEST(TCalculator, can_calculate_tan)
 	m.SetExpression("tg(0)+4");
 	EXPECT_EQ(m.Calc(), 4);
 }
+
+TEST(TCalculator, can_calculate_hard_expr)
+{
+
+	TCalculator m;
+	m.SetExpression("((((2^3)*3)-20+sin(0)-(cos(1)*tg(20)))+30)/2");
+	double res = ((((pow(2,3)) * 3) - 20 + sin(0) - (cos(1) * tan(20))) + 30) / 2.0;
+	EXPECT_EQ(m.Calc(), res);
+}
+TEST(TCalculator, can_calculate_my_expr)
+{
+
+	TCalculator m;
+	m.SetExpression("((((2^3)*3)-20+sin(0))+30)/2");
+	double res = 17.0;
+	EXPECT_EQ(m.Calc(), res);
+}
+
+
+
+//((2^3)*3)-20+sin(0)-(cos(1)*tg(20))

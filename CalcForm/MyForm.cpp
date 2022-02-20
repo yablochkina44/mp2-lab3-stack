@@ -15,4 +15,3 @@ void Main(cli::array<String^>^ args)
 	CalcForm::MyForm form;
 	Application::Run(% form);
 }
-

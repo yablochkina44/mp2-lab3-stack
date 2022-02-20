@@ -42,6 +42,7 @@ namespace CalcForm {
 	protected:
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ label2;
 
 	private:
 		/// <summary>
@@ -60,6 +61,7 @@ namespace CalcForm {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -67,7 +69,7 @@ namespace CalcForm {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(393, 69);
+			this->label1->Location = System::Drawing::Point(29, 75);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(25, 26);
 			this->label1->TabIndex = 0;
@@ -97,11 +99,23 @@ namespace CalcForm {
 			this->textBox1->TabIndex = 2;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(23, 75);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(0, 20);
+			this->label2->TabIndex = 3;
+			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(515, 183);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
@@ -123,10 +137,39 @@ namespace CalcForm {
 		infix = msclr::interop::marshal_as<std::string>(textBox1->Text);
 		TCalculator calc;
 		calc.SetExpression(infix);
-		calc.ToPostfix();
-		label1->Text = "= " + Convert::ToString(calc.CalcPostfix());
+		//label2->Text = Convert::ToString(calc.CheckBrackets());
+		//calc.ToPostfix();
+		double res;
+
+		//if (!calc.CheckBrackets())
+		//{
+		//	label1->Text = "Brackets incorrect";
+
+		//}
+		//else
+		//{
+			try
+			{
+				res = calc.Calc();
+				label1->Text = "= " + Convert::ToString(res);
+			}
+			catch (int ex_int)
+			{
+				label1->Text = "Expression incorrect";
+			}
+			catch (char ex_int)
+			{
+				label1->Text = "Brackets incorrect";
+			}
+			
+		//}
+
+
+		
 	}
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
